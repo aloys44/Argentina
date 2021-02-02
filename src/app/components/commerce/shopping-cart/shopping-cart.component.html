@@ -1,0 +1,38 @@
+<div class="espace_2">
+    <div class="card text-white bg-info mb-6" style="max-width: 30rem;">
+        <div class="card-header text-center"><h1>Votre panier</h1></div>
+        <div class="card-body ">
+            <h5 class="card-title">Inscrivez-vous et connectez pour constituer votre panier</h5>
+            <hr>
+
+            <ul>
+                <li *ngFor="let order of orders.productOrders">
+                    <h2>{{ order.product.name }} - {{ order.quantity}} pcs.</h2>
+                </li>
+            </ul>
+            <button class="btn btn-light btn-block"   routerLink="login">Connection</button>
+        </div>
+
+        <div class="card-body ">
+            <h4 class="card-title">Total: €{{total}}</h4>
+            <hr>
+            <h5 class="card-title">Produits achetés:</h5>
+            <ul>
+                <li *ngFor="let order of orders.productOrders">
+                    {{ order.product.name }} - {{ order.quantity}} pcs.
+                </li>
+            </ul>
+
+            <button class="btn btn-light btn-block" (click)="finishOrder()"
+            [disabled]="orders.productOrders.length == 0">Commander
+            </button>
+        </div>
+        <div class="card-body">
+            <img class="card-img-top" src="./../../../assets/img/cakes/gateauLicorne.jpeg" style="max-width: 30rem;">
+            <img class="card-img-top" src="./../../../assets/img/cakes/gateauCouleur.jpg" style="max-width: 30rem;">
+            <img class="card-img-top" src="./../../../assets/img/cakes/gateauSmarties.jpeg" style="max-width: 30rem;">
+            <img class="card-img-top" src="./../../../assets/img/cakes/gateauFraise.jpg" style="max-width: 30rem;">
+
+        </div>
+</div>
+</div>

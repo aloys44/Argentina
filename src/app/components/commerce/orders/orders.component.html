@@ -1,0 +1,16 @@
+<div class="espace">
+    <h2 class="text-center">Votre commande</h2>
+<ul>
+    <li *ngFor="let order of orders.productOrders">
+        {{ order.product.name }} - {{ order.product.price }} x {{ order.quantity}} €pcs.
+    </li>
+</ul>
+<h4 class="text-left">Prix total: € {{ total }}</h4>
+
+<button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Payer</button>
+
+<div class="alert alert-success" role="alert" *ngIf="paid">
+    <strong>Félicitation!</strong> Vous avez confirmé votre commande.
+</div>
+    <app-add-notice *ngIf="paid" user></app-add-notice>
+</div>

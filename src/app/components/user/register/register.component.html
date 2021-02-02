@@ -1,0 +1,181 @@
+<div class="espace">
+    <form
+    class="form-group"
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label class="label" for="firstName">Prénom</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="form.firstName"
+          required
+          minlength="3"
+          maxlength="20"
+          #firstName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && firstName.invalid">
+          <div *ngIf="firstName.errors.required">Le prénom est requis !</div>
+          <div *ngIf="firstName.errors.minlength">
+            Le prénom doit comporter au moins 3 caractères
+          </div>
+          <div *ngIf="firstName.errors.maxlength">
+            Le prénom doit faire maximum 20 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="lastName">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="form.lastName"
+          required
+          minlength="3"
+          maxlength="20"
+          #lastName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
+          <div *ngIf="lastName.errors.required">Le nom est requis !</div>
+          <div *ngIf="lastName.errors.minlength">
+            Le nom doit comporter au moins 3 caractères
+          </div>
+          <div *ngIf="lastName.errors.maxlength">
+            Le nom doit faire maximum 20 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="username">Pseudo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors.required">Le pseudo est requis !</div>
+          <div *ngIf="username.errors.minlength">
+            Le pseudo doit comporter au moins 3 caractères
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Le pseudo doit faire maximum 20 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">L'email est requis</div>
+          <div *ngIf="email.errors.email">
+            L'email doit être valide !
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="phone">Votre numéro de téléphone</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phone"
+          [(ngModel)]="form.phone"
+          required
+          minlength="3"
+          maxlength="20"
+          #phone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && phone.invalid">
+          <div *ngIf="phone.errors.required">Votre numéro de téléphone est requis !</div>
+          <div *ngIf="phone.errors.minlength">
+            Votre numéro de téléphone doit comporter au moins 3 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="adress">Adresse</label>
+        <input
+          type="text"
+          class="form-control"
+          name="adress"
+          [(ngModel)]="form.adress"
+          required
+          minlength="3"
+          maxlength="20"
+          #adress="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && adress.invalid">
+          <div *ngIf="adress.errors.required">votre adresse est nécessaire !</div>
+          <div *ngIf="adress.errors.minlength">
+            L'adresse doit comporter au moins 3 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="city">La ville</label>
+        <input
+          type="text"
+          class="form-control"
+          name="city"
+          [(ngModel)]="form.city"
+          required
+          minlength="3"
+          maxlength="20"
+          #city="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && city.invalid">
+          <div *ngIf="city.errors.required">La ville est requis !</div>
+          <div *ngIf="city.errors.minlength">
+            Votre ville doit comporter au moins 3 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="password">Mot de passe</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Un mot de passe est requis</div>
+          <div *ngIf="password.errors.minlength">
+            Le mot de passe doit comporter au moins 6 caractères
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Inscription</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        L'inscription a échoué<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      L'inscription est réussie !
+    </div>
+</div>

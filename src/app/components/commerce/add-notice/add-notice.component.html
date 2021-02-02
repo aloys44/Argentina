@@ -1,0 +1,45 @@
+<div class="espace">
+    <div class="label">
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="field">
+          <label for="username">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="comment"
+            [(ngModel)]="form.comment"
+            required
+            #comment="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && comment.invalid"
+          >
+            Un commentaire est requis !
+          </div>
+        </div>
+        <div style="text-align: center"><ngb-rating 
+          [max]="5" 
+          [(rate)]="starRating" 
+          [readonly]="false"
+          #note="ngModel"
+          [(ngModel)]="form.note"
+          name="note"
+          ></ngb-rating></div>
+        <div class="field">
+          <button class="btn btn-primary btn-block">
+            Login
+          </button>
+        </div>
+      </form>
+      
+    </div>
+
+  </div>
+  

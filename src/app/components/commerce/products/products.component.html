@@ -1,0 +1,47 @@
+<div class="espace_2">
+    <div class="row card-deck">
+        <div class="row card-deck">
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">
+                <div class="card text-center">
+                    <div class="card-header text-secondary">
+                        <a href="#"><img class="card-img-top" src='./../../../assets/img/cakes/{{order.product.pictureUrl}}' 
+                            alt=""></a>
+                    </div>
+                    <div class="card-body">
+                            <h3 class="text-danger"><strong>{{order.product.name}}</strong></h3>
+                        <div class="espace_2">
+                        <h5 class="card-title">{{order.product.price}} €</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" style="margin-bottom: 1rem"*ngIf="!isProductSelected(order.product)">
+                                <input type="number" min="0" class="form-control" 
+                                    [(ngModel)]=order.quantity>
+                            </div>
+                            <div class="col-12" style="text-align:center" *ngIf="!isProductSelected(order.product)">
+                                <button class="btn btn-primary btn-block" (click)="addToCart(order)"
+                                        [disabled]="order.quantity <= 0">Ajouter au panier
+                                </button>
+                            </div>
+                            <div class="col-12" style="text-align:center" *ngIf="isProductSelected(order.product)">
+                                <button class="btn btn-primary btn-block"
+                                        (click)="removeFromCart(order)">Enlever du panier
+                                </button>
+                            </div>
+                            <div class="col-12" style="text-align:center">
+                                <button class="btn btn-primary btn-block"
+                                (click)="changeDisplay()"
+                                >Afficher carte
+                                </button>
+                                <app-map [latitude]="order.product.latitude" (open)="onOpen($event)" (close)="onClose($event)"></app-map>
+
+                            </div>
+
+                        </div>
+                        <div class="row" *ngIf="!isLoggedIn">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>    

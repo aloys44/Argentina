@@ -1,0 +1,60 @@
+    <div class="label">
+      <div class="container login-container">
+        <div class="row">
+            <div class="col-md-12 login-form-2">
+                <h3>Login for Form 2</h3>
+                <form
+                *ngIf="!isLoggedIn"
+                name="form"
+                (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate
+                >
+                    <div class="form-group">
+                        <input 
+                        type="text"
+                        class="form-control"
+                        name="username"
+                        [(ngModel)]="form.username"
+                        required
+                        #username="ngModel"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Your Username *" 
+                        value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" 
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        [(ngModel)]="form.password"
+                        required
+                        minlength="6"
+                        #password="ngModel"
+                        class="form-control"
+                        placeholder="Your Password *" 
+                        value="" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        <div *ngIf="isUser">
+        <p>"Vous êtes connecté en tant qu'utilisateur"</p>
+      </div>
+      <div *ngIf="isAdmin">
+        <p>"Vous êtes connecté en tant qu'admin"</p>
+      </div>
+      </div>
+    </div>
+  
